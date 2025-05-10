@@ -1,6 +1,6 @@
-# TuiType
+# tuitype
 
-A terminal-based typing test application written in Go.
+A simple terminal-based typing test written in Go.
 
 ## Features (Planned)
 

@@ -1,8 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"log"
+
+	tea "github.com/charmbracelet/bubbletea"
+
+	"github.com/dylanramos/tuitype/internal/text"
+	"github.com/dylanramos/tuitype/internal/ui"
+)
 
 func main() {
-	fmt.Println("tuitype - a simple terminal typing test")
-	fmt.Println("coming soon...")
+	m := ui.NewModel(text.Words)
+	p := tea.NewProgram(m)
+	if _, err := p.Run(); err != nil {
+		log.Fatal(err)
+	}
 }
