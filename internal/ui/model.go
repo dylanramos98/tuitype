@@ -349,9 +349,9 @@ func gameView(m Model) string {
 					}
 				} else if j == len(inputRunes) {
 					b.WriteString("|")
-					b.WriteString(WordStyle.Render(string(r)))
+					b.WriteString(string(r))
 				} else {
-					b.WriteString(WordStyle.Render(string(r)))
+					b.WriteString(string(r))
 				}
 			}
 			if len(inputRunes) == len(wordRunes) {
@@ -359,10 +359,10 @@ func gameView(m Model) string {
 			}
 			words[i] = b.String()
 		} else {
-			words[i] = lipgloss.NewStyle().Foreground(Catppuccin.Overlay1).Render(w)
+			words[i] = w
 		}
 	}
-	wordsLine := lipgloss.NewStyle().Align(lipgloss.Center).Width(72).Render(strings.Join(words, " "))
+	wordsLine := strings.Join(words, " ")
 	timer := lipgloss.NewStyle().Foreground(Catppuccin.Yellow).Render(fmt.Sprintf("%ds", int(m.timeLeft.Seconds())))
 	padTop := "\n\n\n"
 	padBottom := "\n\n\n"

@@ -28,15 +28,15 @@ var allWords = []string{
 
 // GetRandomWords returns a random selection of words for the typing test
 func GetRandomWords(count int) []string {
-	// Initialize random seed
-	rand.Seed(time.Now().UnixNano())
+	// Create a local random generator
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	// Create a copy of allWords to avoid modifying the original
 	words := make([]string, len(allWords))
 	copy(words, allWords)
 
-	// Shuffle the words
-	rand.Shuffle(len(words), func(i, j int) {
+	// Shuffle the words using the local generator
+	r.Shuffle(len(words), func(i, j int) {
 		words[i], words[j] = words[j], words[i]
 	})
 

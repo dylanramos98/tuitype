@@ -44,11 +44,11 @@ var Catppuccin = struct {
 
 var (
 	WindowStyle = lipgloss.NewStyle().
-			Background(Catppuccin.Base).
-			Border(lipgloss.RoundedBorder(), true).
-			BorderForeground(Catppuccin.Surface2).
-			Padding(2, 4).
-			Align(lipgloss.Center)
+		//Background(Catppuccin.Base).
+		Border(lipgloss.RoundedBorder(), true).
+		BorderForeground(Catppuccin.Surface2).
+		Padding(2, 4).
+		Align(lipgloss.Center)
 
 	TitleStyle = lipgloss.NewStyle().
 			Foreground(Catppuccin.Blue).
@@ -72,7 +72,8 @@ var (
 			Bold(true)
 
 	TypedStyle = lipgloss.NewStyle().
-			Foreground(Catppuccin.Overlay0)
+			Foreground(Catppuccin.Overlay0).
+			Faint(true)
 
 	IncorrectStyle = lipgloss.NewStyle().
 			Foreground(Catppuccin.Red)
