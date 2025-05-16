@@ -8,6 +8,7 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
+	"github.com/dylanramos/tuitype/internal/text"
 )
 
 type State int
@@ -40,7 +41,7 @@ type Model struct {
 func NewModel(words []string) Model {
 	return Model{
 		state:            StateWelcome,
-		words:            words,
+		words:            text.GetRandomWords(50),
 		timeLimit:        30 * time.Second,
 		timeLeft:         30 * time.Second,
 		lastMistakePos:   -1,
@@ -107,6 +108,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.incorrectLetters = make(map[int]map[int]bool)
 				m.finalElapsed = 0
 				m.prevInputs = make(map[int]string)
+				m.words = text.GetRandomWords(50)
 				return m, tick()
 			}
 			if msg.String() == "s" {
@@ -227,6 +229,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.prevInputs = make(map[int]string)
 				m.animFrame = 0
 				m.barLetters = nil
+				m.words = text.GetRandomWords(50)
 				return m, welcomeAnimTick()
 			}
 		}

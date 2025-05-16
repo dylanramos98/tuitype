@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	m := ui.NewModel(text.Words)
+	m := ui.NewModel(text.GetWords())
 	p := tea.NewProgram(m)
 	if _, err := p.Run(); err != nil {
 		log.Fatal(err)
